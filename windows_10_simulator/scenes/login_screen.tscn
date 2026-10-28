@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://yiaotpj8884g"]
+
+[ext_resource type="Script" uid="uid://b0f1l5rmjhopn" path="res://scripts/login_screen.gd" id="1_8q002"]
+[ext_resource type="Texture2D" uid="uid://cgehaxfwowhuv" path="res://assets/wallpapers/lockwallpaper.jpg" id="1_e8ckn"]
+[ext_resource type="Shader" uid="uid://ctsg8xad3kqx7" path="res://shaders/blur.gdshader" id="2_8q002"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77to7"]
+shader = ExtResource("2_8q002")
+shader_parameter/blur_amount = 2.000000095
+
+[node name="Login Screen" type="Control" unique_id=600430177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8q002")
+
+[node name="Wallpaper" type="TextureRect" parent="." unique_id=1011528341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_e8ckn")
+expand_mode = 2
+
+[node name="Blur Overlay" type="ColorRect" parent="." unique_id=991021177]
+material = SubResource("ShaderMaterial_77to7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 768.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
