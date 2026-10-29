@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Windows 10 Simulator"
+config/version="v0.2"
 run/main_scene="uid://dc8javrocmb23"
 config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)

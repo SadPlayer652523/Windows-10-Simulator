@@ -25,3 +25,4 @@ mono_crash.*.json
 *.pck
 
 godot_super-wakatime/
+references/
