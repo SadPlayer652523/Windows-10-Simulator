@@ -37,7 +37,7 @@ func get_system_time(label: RichTextLabel, colon: RichTextLabel, login=false):
 		hours = 12
 	
 	if hours >= 10:
-		label.text = hours + "\t" + minutes
+		label.text = str(hours) + "\t" + minutes
 		if login:
 			colon.position = Vector2(148, 430)
 	else:
@@ -54,4 +54,5 @@ func get_system_date(label: RichTextLabel):
 	var current_month = months[date_dict.month]
 	var current_day = date_dict.day
 	
-	label.text = current_weekday + ", " + current_month + " " + str(current_day)
+	if is_instance_valid(label):
+		label.text = current_weekday + ", " + current_month + " " + str(current_day)

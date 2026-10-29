@@ -1,14 +1,14 @@
 extends Control
 
+@onready var wallpaper: TextureRect = $Wallpaper
 @onready var blur_overlay: ColorRect = $"Blur Overlay"
-@onready var time_label: RichTextLabel = $"Time Label"
-@onready var colon_label: RichTextLabel = $"Colon Label"
-@onready var date_label: RichTextLabel = $"Date Label"
+@onready var time_label: RichTextLabel = $"First Screen/Time Label"
+@onready var colon_label: RichTextLabel = $"First Screen/Colon Label"
+@onready var date_label: RichTextLabel = $"First Screen/Date Label"
+@onready var first_screen: Control = $"First Screen"
+@onready var second_screen: Control = $"Second Screen"
 
-var current_blur = 0.0
-var target_blur = 2.0
-var fade_speed = 4.0
-var tween_fade_time = 0.16
+var tween_fade_time = 0.2
 var blurred = false
 
 func _ready() -> void:
@@ -18,16 +18,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	Global.get_system_date(date_label)
 	Global.get_system_time(time_label, colon_label, true)
-
-	if abs(current_blur - target_blur) < 0.01:
-		current_blur = target_blur
-		
-	if current_blur != target_blur and blurred:
-		current_blur = lerp(current_blur, target_blur, fade_speed * delta)
-	elif !blurred:
-		current_blur = lerp(current_blur, 0.0, fade_speed * delta)
-		
-	blur_overlay.set_instance_shader_parameter("blur_amount", current_blur)
 	
 func _input(event: InputEvent) -> void:
 	if (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
@@ -37,14 +27,18 @@ func _input(event: InputEvent) -> void:
 		
 func blur():
 	var tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_LINEAR)
+	var scale_tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	blurred = true
-	tween.tween_property(time_label, "modulate:a", 0.0, tween_fade_time)
-	tween.tween_property(colon_label, "modulate:a", 0.0, tween_fade_time)
-	tween.tween_property(date_label, "modulate:a", 0.0, tween_fade_time)
+	scale_tween.tween_property(wallpaper, "scale", Vector2(1.02, 1.02), tween_fade_time)
+	tween.tween_property(blur_overlay, "color:a", 0.42, tween_fade_time)
+	tween.tween_property(first_screen, "modulate:a", 0.0, tween_fade_time)
+	tween.tween_property(second_screen, "modulate:a", 1.0, tween_fade_time)
 	
 func unblur():
 	var tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_LINEAR)
+	var scale_tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	blurred = false
-	tween.tween_property(time_label, "modulate:a", 1.0, tween_fade_time)
-	tween.tween_property(colon_label, "modulate:a", 1.0, tween_fade_time)
-	tween.tween_property(date_label, "modulate:a", 1.0, tween_fade_time)
+	scale_tween.tween_property(wallpaper, "scale", Vector2(1.0, 1.0), tween_fade_time)
+	tween.tween_property(blur_overlay, "color:a", 0.21, tween_fade_time)
+	tween.tween_property(first_screen, "modulate:a", 1.0, tween_fade_time)
+	tween.tween_property(second_screen, "modulate:a", 0.0, tween_fade_time)
