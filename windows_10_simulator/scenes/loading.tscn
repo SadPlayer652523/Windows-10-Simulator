@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dowjyn4movm2k"]
+
+[ext_resource type="Script" uid="uid://do0hkn3kn0mgo" path="res://scripts/loading.gd" id="1_dhqfv"]
+[ext_resource type="FontFile" uid="uid://dcp45d12fhla" path="res://fonts/segoe_slboot.ttf" id="1_yc7uc"]
+[ext_resource type="FontFile" uid="uid://cnv884bygopvm" path="res://fonts/segoeuisl.ttf" id="3_dhqfv"]
+
+[node name="Loading" type="Control" unique_id=1339661440]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dhqfv")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1126571397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.47058824, 0.84313726, 1)
+
+[node name="Spinner" type="Label" parent="." unique_id=1883179639]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -61.0
+offset_right = 55.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_yc7uc")
+theme_override_font_sizes/font_size = 48
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=958402184]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = 12.0
+offset_right = 105.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_dhqfv")
+theme_override_font_sizes/normal_font_size = 26
+text = "Welcome"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

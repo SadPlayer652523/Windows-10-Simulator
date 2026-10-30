@@ -1,9 +1,14 @@
 extends Node
 
+const hashed_password = "ce37d910f279d36deb9a76f42aa7e40b"
+
+var starting_frame = 0xE052
 var current_frame = 0xE052
 var max_frame = 0xE0CB
 var transition = 0xE06B
 var transition_2 = 0xE09A
+
+var loading_text = "Welcome"
 
 func _ready() -> void:
 	pass
@@ -13,6 +18,7 @@ func _process(delta: float) -> void:
 	
 func spin(spinner: Label, add_text="") -> void:
 	var stage = 0
+	current_frame = starting_frame
 	while is_instance_valid(spinner):
 		if add_text == "":
 			spinner.text = char(current_frame)
@@ -39,11 +45,11 @@ func get_system_time(label: RichTextLabel, colon: RichTextLabel, login=false):
 	if hours >= 10:
 		label.text = str(hours) + "\t" + minutes
 		if login:
-			colon.position = Vector2(148, 430)
+			colon.position.x = 104
 	else:
 		label.text = str(hours) + " " + minutes
 		if login:
-			colon.position = Vector2(106, 430)
+			colon.position.x = 72
 	
 func get_system_date(label: RichTextLabel):
 	var date_dict = Time.get_date_dict_from_system()
@@ -56,3 +62,9 @@ func get_system_date(label: RichTextLabel):
 	
 	if is_instance_valid(label):
 		label.text = current_weekday + ", " + current_month + " " + str(current_day)
+		
+func hash_password(password: String) -> String:
+	var hash = HashingContext.new()
+	hash.start(HashingContext.HASH_MD5)
+	hash.update(password.to_utf8_buffer())
+	return hash.finish().hex_encode()

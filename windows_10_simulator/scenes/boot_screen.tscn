@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bh7qamfhgeifr" path="res://assets/boot_logo.png" id="1_nip3r"]
 [ext_resource type="Script" uid="uid://dfkh33w86wybo" path="res://scripts/boot_screen.gd" id="1_uwyt3"]
-[ext_resource type="PackedScene" uid="uid://yiaotpj8884g" path="res://scenes/login_screen.tscn" id="2_v46t4"]
+[ext_resource type="PackedScene" uid="uid://dowjyn4movm2k" path="res://scenes/loading.tscn" id="2_v46t4"]
+[ext_resource type="PackedScene" uid="uid://yiaotpj8884g" path="res://scenes/login_screen.tscn" id="3_okh44"]
 [ext_resource type="FontFile" uid="uid://dcp45d12fhla" path="res://fonts/segoe_slboot.ttf" id="3_v46t4"]
 
 [node name="Boot Screen" type="Control" unique_id=888118654]
@@ -13,7 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uwyt3")
-login_screen_scene = ExtResource("2_v46t4")
+loading_scene = ExtResource("2_v46t4")
+login_scene = ExtResource("3_okh44")
 
 [node name="Background" type="ColorRect" parent="." unique_id=863422453]
 layout_mode = 1

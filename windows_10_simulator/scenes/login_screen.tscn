@@ -2,17 +2,26 @@
 
 [ext_resource type="Script" uid="uid://b0f1l5rmjhopn" path="res://scripts/login_screen.gd" id="1_8q002"]
 [ext_resource type="Texture2D" uid="uid://cgehaxfwowhuv" path="res://assets/wallpapers/lockwallpaper.jpg" id="1_e8ckn"]
-[ext_resource type="Texture2D" uid="uid://d4c3m3uxhxb0r" path="res://references/lockscreenpassword.png" id="4_kcwbp"]
+[ext_resource type="StyleBox" uid="uid://cr5h6ret1m8o2" path="res://styles/next_button_focused.tres" id="2_navmr"]
 [ext_resource type="FontFile" uid="uid://bm27m2dpvdgxj" path="res://fonts/segoeuil.ttf" id="4_mhqwn"]
 [ext_resource type="FontFile" uid="uid://djf4afly8hx06" path="res://fonts/SegMDL2.ttf" id="5_kcwbp"]
 [ext_resource type="FontFile" uid="uid://upk42e5mft3f" path="res://fonts/segoeui.ttf" id="6_dtwsp"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8q002"]
-load_path = "res://.godot/imported/lockscreenclock.png-8d8ed399b125c50b16a51b1604a33e53.ctex"
+[ext_resource type="Shader" uid="uid://rhfudx4owo1v" path="res://shaders/circle.gdshader" id="7_5m8ma"]
+[ext_resource type="StyleBox" uid="uid://cuxiy8cbgcymp" path="res://styles/unfocused_password.tres" id="7_cmc67"]
+[ext_resource type="StyleBox" uid="uid://sd2d4um87law" path="res://styles/focused_password_hover.tres" id="7_ph3x0"]
+[ext_resource type="StyleBox" uid="uid://deww038jcfsvn" path="res://styles/unfocused_password_hover.tres" id="8_16hpu"]
+[ext_resource type="Texture2D" uid="uid://dix2y87bov6qq" path="res://icon.svg" id="8_l756y"]
+[ext_resource type="StyleBox" uid="uid://ccceyng5t1l70" path="res://styles/focused_password.tres" id="8_navmr"]
+[ext_resource type="StyleBox" uid="uid://dxqj8o1cdh5qm" path="res://styles/next_button_hover.tres" id="10_6jw0y"]
+[ext_resource type="StyleBox" uid="uid://gftgwggaluxm" path="res://styles/next_button_unfocused.tres" id="10_bmn8x"]
+[ext_resource type="FontFile" uid="uid://cnv884bygopvm" path="res://fonts/segoeuisl.ttf" id="11_16hpu"]
+[ext_resource type="FontFile" uid="uid://dcp45d12fhla" path="res://fonts/segoe_slboot.ttf" id="16_16hpu"]
 
 [sub_resource type="FontVariation" id="FontVariation_lfkbx"]
-base_font = ExtResource("4_mhqwn")
-spacing_glyph = 1
+base_font = ExtResource("11_16hpu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfkbx"]
+shader = ExtResource("7_5m8ma")
 
 [sub_resource type="FontVariation" id="FontVariation_dtwsp"]
 base_font = ExtResource("4_mhqwn")
@@ -31,29 +40,46 @@ bg_color = Color(1, 1, 1, 0.16862746)
 [sub_resource type="FontVariation" id="FontVariation_aui74"]
 base_font = ExtResource("6_dtwsp")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vicex"]
-bg_color = Color(1, 1, 1, 1)
-border_width_top = 2
-border_width_bottom = 2
-border_color = Color(0.71, 0.71, 0.71, 0.83137256)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l756y"]
-content_margin_left = 10.0
-bg_color = Color(1, 1, 1, 1)
-border_width_top = 2
-border_width_bottom = 2
-border_color = Color(0.70980394, 0.70980394, 0.70980394, 0.83137256)
-
 [sub_resource type="FontVariation" id="FontVariation_vicex"]
 base_font = ExtResource("5_kcwbp")
 baseline_offset = -0.03
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77to7"]
-bg_color = Color(0.58, 0.58, 0.58, 0.39215687)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfkbx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aui74"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vicex"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_77to7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pkoy"]
+
+[sub_resource type="FontVariation" id="FontVariation_77to7"]
+base_font = ExtResource("6_dtwsp")
+
+[sub_resource type="FontVariation" id="FontVariation_1pkoy"]
+base_font = ExtResource("6_dtwsp")
+spacing_glyph = -1
+spacing_space = -4
+baseline_offset = -0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfkbx"]
+bg_color = Color(1, 1, 1, 0.19607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajffm"]
+bg_color = Color(1, 1, 1, 0.33333334)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16hpu"]
+bg_color = Color(1, 1, 1, 0.19607843)
+border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.70980394, 0.70980394, 0.70980394, 0.83137256)
+border_color = Color(1, 1, 1, 0.33333334)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gsg0"]
+bg_color = Color(1, 1, 1, 0.13725491)
+border_color = Color(0, 0, 0, 0.6862745)
 
 [node name="Login Screen" type="Control" unique_id=600430177]
 layout_mode = 3
@@ -63,6 +89,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8q002")
+next_button_focused = ExtResource("2_navmr")
+next_button_unfocused = ExtResource("10_bmn8x")
+next_button_hover = ExtResource("10_6jw0y")
+focused_password = ExtResource("8_navmr")
+unfocused_password = ExtResource("7_cmc67")
+focused_password_hover = ExtResource("7_ph3x0")
+unfocused_password_hover = ExtResource("8_16hpu")
 
 [node name="Wallpaper" type="TextureRect" parent="." unique_id=1011528341]
 layout_mode = 1
@@ -73,7 +106,8 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(683, 384)
 texture = ExtResource("1_e8ckn")
-expand_mode = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Blur Overlay" type="ColorRect" parent="." unique_id=991021177]
 layout_mode = 1
@@ -84,77 +118,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.21000001)
 
-[node name="Single Digit Reference" type="TextureRect" parent="." unique_id=39679532]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("CompressedTexture2D_8q002")
-
-[node name="First Screen" type="Control" parent="." unique_id=1470781847]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Time Label" type="RichTextLabel" parent="First Screen" unique_id=962936634]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = 402.0
-offset_right = 341.0
-offset_bottom = 538.0
-grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("4_mhqwn")
-theme_override_font_sizes/normal_font_size = 128
-text = "10	00"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Colon Label" type="RichTextLabel" parent="First Screen" unique_id=515148619]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 148.0
-offset_top = 390.0
-offset_right = 177.99992
-offset_bottom = 526.0
-grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("4_mhqwn")
-theme_override_font_sizes/normal_font_size = 128
-text = ":"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Date Label" type="RichTextLabel" parent="First Screen" unique_id=193310183]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = 557.0
-offset_right = 588.0
-offset_bottom = 636.0
-grow_vertical = 0
-theme_override_fonts/normal_font = SubResource("FontVariation_lfkbx")
-theme_override_font_sizes/normal_font_size = 55
-text = "Tuesday, September 30"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Password Reference" type="TextureRect" parent="." unique_id=81871440]
-layout_mode = 0
-offset_right = 1366.0
-offset_bottom = 768.0
-texture = ExtResource("4_kcwbp")
-
-[node name="Second Screen" type="Control" parent="." unique_id=2142739356]
+[node name="Screen 1" type="Control" parent="." unique_id=1470781847]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,7 +126,85 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="User Label" type="RichTextLabel" parent="Second Screen" unique_id=2108418640]
+[node name="Time Label" type="RichTextLabel" parent="Screen 1" unique_id=962936634]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -244.0
+offset_right = 326.0
+offset_bottom = -108.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_mhqwn")
+theme_override_font_sizes/normal_font_size = 96
+text = "10	00"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Colon Label" type="RichTextLabel" parent="Screen 1" unique_id=900635882]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+offset_top = -253.0
+offset_right = 126.0
+offset_bottom = -117.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_mhqwn")
+theme_override_font_sizes/normal_font_size = 96
+text = ":"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Date Label" type="RichTextLabel" parent="Screen 1" unique_id=193310183]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -128.0
+offset_right = 575.0
+offset_bottom = -49.0
+grow_vertical = 0
+theme_override_fonts/normal_font = SubResource("FontVariation_lfkbx")
+theme_override_font_sizes/normal_font_size = 46
+text = "Tuesday, September 30"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Screen 2" type="Control" parent="." unique_id=2142739356]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Profile" type="TextureRect" parent="Screen 2" unique_id=929078788]
+material = SubResource("ShaderMaterial_lfkbx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -228.0
+offset_right = 97.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_l756y")
+expand_mode = 1
+
+[node name="User Label" type="RichTextLabel" parent="Screen 2" unique_id=2108418640]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 8
@@ -178,12 +220,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = SubResource("FontVariation_dtwsp")
 theme_override_font_sizes/normal_font_size = 46
-text = "Dell"
+text = "Godot Windows"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="Power Button" type="Button" parent="Second Screen" unique_id=1668343463]
+[node name="Sub-Screen 1" type="Control" parent="Screen 2" unique_id=1210118559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Power Button" type="Button" parent="Screen 2/Sub-Screen 1" unique_id=1668343463]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -196,6 +247,7 @@ offset_right = -23.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_kcwbp")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qeenl")
@@ -203,7 +255,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_dtwsp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bmn8x")
 text = ""
 
-[node name="Ease of Access Button" type="Button" parent="Second Screen" unique_id=1693078667]
+[node name="Ease of Access Button" type="Button" parent="Screen 2/Sub-Screen 1" unique_id=1693078667]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -216,13 +268,14 @@ offset_right = -72.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_kcwbp")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cmc67")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bmn8x")
 text = ""
 
-[node name="WiFi Button" type="Button" parent="Second Screen" unique_id=2068234872]
+[node name="WiFi Button" type="Button" parent="Screen 2/Sub-Screen 1" unique_id=2068234872]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -235,12 +288,13 @@ offset_right = -120.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_kcwbp")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_navmr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bmn8x")
 
-[node name="WiFi Button Label" type="RichTextLabel" parent="Second Screen" unique_id=310415162]
+[node name="WiFi Button Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1" unique_id=310415162]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 3
@@ -254,7 +308,7 @@ offset_right = -141.0
 offset_bottom = -64.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/default_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("5_kcwbp")
 theme_override_font_sizes/normal_font_size = 30
 text = ""
@@ -262,7 +316,7 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="Border" type="ColorRect" parent="Second Screen" unique_id=1954223528]
+[node name="Password Box" type="LineEdit" parent="Screen 2/Sub-Screen 1" unique_id=1882761519]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -271,53 +325,26 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -147.0
 offset_top = 66.0
-offset_right = -137.0
-offset_bottom = 102.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.70980394, 0.70980394, 0.70980394, 0.83137256)
-
-[node name="Background" type="ColorRect" parent="Second Screen" unique_id=1755787512]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = 68.0
-offset_right = -137.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LineEdit" type="LineEdit" parent="Second Screen" unique_id=1882761519]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -137.0
-offset_top = 66.0
 offset_right = 116.0
 offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_placeholder_color = Color(0.71, 0.71, 0.71, 1)
+theme_override_colors/font_placeholder_color = Color(0.70975083, 0.70975083, 0.70975083, 0.795)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_aui74")
 theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_vicex")
-theme_override_styles/focus = SubResource("StyleBoxFlat_l756y")
+theme_override_styles/normal = ExtResource("8_navmr")
+theme_override_styles/read_only = ExtResource("8_navmr")
+theme_override_styles/focus = ExtResource("8_navmr")
 placeholder_text = "Password"
+editable = false
 virtual_keyboard_enabled = false
 caret_blink = true
 secret = true
 secret_character = "●"
 
-[node name="Button" type="Button" parent="Second Screen" unique_id=1635900886]
+[node name="Next Button" type="Button" parent="Screen 2/Sub-Screen 1" unique_id=1635900886]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -332,5 +359,274 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("FontVariation_vicex")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_77to7")
+theme_override_styles/normal = ExtResource("2_navmr")
+theme_override_styles/pressed = ExtResource("10_6jw0y")
+theme_override_styles/hover = ExtResource("10_6jw0y")
+theme_override_styles/focus = ExtResource("2_navmr")
 text = ""
+
+[node name="Password Hint" type="RichTextLabel" parent="Screen 2/Sub-Screen 1" unique_id=305606935]
+visible = false
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = 113.0
+offset_right = 75.5
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_dtwsp")
+theme_override_font_sizes/normal_font_size = 15
+text = "Password hint: GodotWindows"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reset Password Button" type="Button" parent="Screen 2/Sub-Screen 1" unique_id=1585753251]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 151.5
+offset_right = 55.5
+offset_bottom = 174.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87, 0.87, 0.87, 0.84705883)
+theme_override_fonts/font = ExtResource("6_dtwsp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lfkbx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aui74")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vicex")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_77to7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1pkoy")
+text = "Reset password"
+
+[node name="Sub-Screen 2" type="Control" parent="Screen 2" unique_id=134176009]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Incorrect Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 2" unique_id=1593263338]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = 57.0
+offset_right = 119.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_77to7")
+theme_override_font_sizes/normal_font_size = 15
+text = "The password is incorrect. Try again."
+scroll_active = false
+autowrap_mode = 0
+
+[node name="OK Button" type="Button" parent="Screen 2/Sub-Screen 2" unique_id=924806133]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 106.0
+offset_right = 61.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_1pkoy")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_lfkbx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ajffm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_16hpu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6gsg0")
+text = " OK"
+
+[node name="OK Button Focus Border" type="Control" parent="Screen 2/Sub-Screen 2" unique_id=350417141]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Left" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=1055187987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = 103.0
+offset_right = -60.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=1329536440]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0
+offset_top = 105.0
+offset_right = 64.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Up" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=236882922]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 103.0
+offset_right = 64.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=1177584654]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = 140.0
+offset_right = 62.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left2" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=611061309]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 106.0
+offset_right = -59.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6862745)
+
+[node name="Right2" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=213169014]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 61.0
+offset_top = 105.0
+offset_right = 62.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6862745)
+
+[node name="Up2" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=1653161967]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 105.0
+offset_right = 61.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6862745)
+
+[node name="Bottom2" type="ColorRect" parent="Screen 2/Sub-Screen 2/OK Button Focus Border" unique_id=132594418]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 139.0
+offset_right = 62.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6862745)
+
+[node name="Sub-Screen 3" type="Control" parent="Screen 2" unique_id=156074551]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Welcome" type="Label" parent="Screen 2/Sub-Screen 3" unique_id=2029667482]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = 62.5
+offset_right = 119.0
+offset_bottom = 95.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("16_16hpu")
+theme_override_font_sizes/font_size = 24
+text = " Welcome"
+horizontal_alignment = 1
+
+[connection signal="focus_entered" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_focus_entered"]
+[connection signal="focus_exited" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_focus_exited"]
+[connection signal="mouse_entered" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_mouse_entered"]
+[connection signal="mouse_exited" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_mouse_exited"]
+[connection signal="text_submitted" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_text_submitted"]
+[connection signal="button_down" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_next_button_button_down"]
+[connection signal="mouse_entered" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_password_box_mouse_entered"]
+[connection signal="mouse_exited" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_password_box_mouse_exited"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_next_button_pressed"]
+[connection signal="focus_exited" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_focus_exited"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_pressed"]
