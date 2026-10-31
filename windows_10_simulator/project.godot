@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Windows 10 Simulator"
 config/version="v0.3"
-run/main_scene="uid://dc8javrocmb23"
+run/main_scene="uid://0an1w8x3w4aj"
 config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

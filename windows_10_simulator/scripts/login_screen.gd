@@ -7,6 +7,8 @@ extends Control
 @export var unfocused_password: StyleBoxFlat
 @export var focused_password_hover: StyleBoxFlat
 @export var unfocused_password_hover: StyleBoxFlat
+@export var loading_scene: PackedScene
+@export var bios_scene: PackedScene
 
 @onready var wallpaper: TextureRect = $Wallpaper
 @onready var blur_overlay: ColorRect = $"Blur Overlay"
@@ -31,6 +33,10 @@ extends Control
 @onready var high_contrast_status_label: RichTextLabel = $"Screen 2/Sub-Screen 1/Ease of Access Menu/High Contrast Status Label"
 @onready var sticky_keys_status_label: RichTextLabel = $"Screen 2/Sub-Screen 1/Ease of Access Menu/Sticky Keys Status Label"
 @onready var filter_keys_status_label: RichTextLabel = $"Screen 2/Sub-Screen 1/Ease of Access Menu/Filter Keys Status Label"
+@onready var power_menu: Control = $"Screen 2/Sub-Screen 1/Power Menu"
+@onready var sleep_button: Button = $"Screen 2/Sub-Screen 1/Power Menu/Sleep Button"
+@onready var shut_down_button: Button = $"Screen 2/Sub-Screen 1/Power Menu/Shut down Button"
+@onready var restart_button: Button = $"Screen 2/Sub-Screen 1/Power Menu/Restart Button"
 @onready var sub_screen_2: Control = $"Screen 2/Sub-Screen 2"
 @onready var incorrect_label: RichTextLabel = $"Screen 2/Sub-Screen 2/Incorrect Label"
 @onready var ok_button: Button = $"Screen 2/Sub-Screen 2/OK Button"
@@ -76,6 +82,9 @@ func _input(event: InputEvent) -> void:
 		if sub_screen_2.visible and event is InputEventMouseButton and event.pressed:
 			if incorrect_label.get_global_rect().has_point(event.position):
 				ok_button_focus_border.hide()
+		if power_menu.visible and event is InputEventMouseButton and event.pressed:
+			if !power_menu.get_global_rect().has_point(event.position):
+				power_menu.hide()
 
 func blur():
 	var tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_LINEAR)
@@ -176,7 +185,7 @@ func _on_ok_button_focus_exited() -> void:
 	ok_button_focus_border.hide()
 
 func _on_power_button_pressed() -> void:
-	pass
+	power_menu.show()
 
 func _on_ease_of_access_button_pressed() -> void:
 	ease_of_access_menu.show()
@@ -234,3 +243,19 @@ func _on_filter_keys_check_toggled(toggled_on: bool) -> void:
 		filter_keys_status_label.text = "On"
 	else:
 		filter_keys_status_label.text = "Off"
+
+func _on_sleep_button_pressed() -> void:
+	get_tree().quit()
+
+func _on_shut_down_button_pressed() -> void:
+	var loading_screen = loading_scene.instantiate()
+	Global.loading_text = "Shutting down"
+	get_tree().root.add_child(loading_screen)
+	queue_free()
+
+func _on_restart_button_pressed() -> void:
+	var loading_screen = loading_scene.instantiate()
+	Global.loading_text = "Restarting"
+	get_tree().root.add_child(loading_screen)
+	queue_free()
+	

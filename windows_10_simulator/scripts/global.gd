@@ -9,6 +9,7 @@ var transition = 0xE06B
 var transition_2 = 0xE09A
 
 var loading_text = "Welcome"
+var spin_active = false
 
 func _ready() -> void:
 	pass
@@ -17,9 +18,12 @@ func _process(delta: float) -> void:
 	pass
 	
 func spin(spinner: Label, add_text="") -> void:
+	spin_active = false
+	await get_tree().process_frame
+	spin_active = true
 	var stage = 0
 	current_frame = starting_frame
-	while is_instance_valid(spinner):
+	while is_instance_valid(spinner) and spin_active:
 		if add_text == "":
 			spinner.text = char(current_frame)
 		else:

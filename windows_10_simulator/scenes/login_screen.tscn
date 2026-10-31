@@ -12,11 +12,12 @@
 [ext_resource type="StyleBox" uid="uid://deww038jcfsvn" path="res://styles/unfocused_password_hover.tres" id="8_16hpu"]
 [ext_resource type="Texture2D" uid="uid://dix2y87bov6qq" path="res://icon.svg" id="8_l756y"]
 [ext_resource type="StyleBox" uid="uid://ccceyng5t1l70" path="res://styles/focused_password.tres" id="8_navmr"]
+[ext_resource type="PackedScene" uid="uid://dowjyn4movm2k" path="res://scenes/loading.tscn" id="9_6380c"]
 [ext_resource type="StyleBox" uid="uid://dxqj8o1cdh5qm" path="res://styles/next_button_hover.tres" id="10_6jw0y"]
 [ext_resource type="StyleBox" uid="uid://gftgwggaluxm" path="res://styles/next_button_unfocused.tres" id="10_bmn8x"]
+[ext_resource type="PackedScene" uid="uid://0an1w8x3w4aj" path="res://scenes/bios.tscn" id="10_cwvky"]
 [ext_resource type="FontFile" uid="uid://cnv884bygopvm" path="res://fonts/segoeuisl.ttf" id="11_16hpu"]
 [ext_resource type="FontFile" uid="uid://dcp45d12fhla" path="res://fonts/segoe_slboot.ttf" id="16_16hpu"]
-[ext_resource type="Texture2D" uid="uid://dvdviy2rvc54j" path="res://references/easeofaccesshover.png" id="16_ajffm"]
 [ext_resource type="Texture2D" uid="uid://cdhqupoutfqk2" path="res://assets/check_button/checked.png" id="17_6380c"]
 [ext_resource type="Texture2D" uid="uid://dqkv2b8bma760" path="res://assets/check_button/unchecked.png" id="17_ajffm"]
 
@@ -65,6 +66,40 @@ baseline_offset = -0.03
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajffm"]
 bg_color = Color(0.87058824, 0.87058824, 0.87058824, 1)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aui74"]
+frequency = 1.0
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lfkbx"]
+width = 121
+height = 106
+noise = SubResource("FastNoiseLite_aui74")
+seamless = true
+normalize = false
+
+[sub_resource type="FontVariation" id="FontVariation_nhfc8"]
+base_font = ExtResource("5_kcwbp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6380c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwvky"]
+bg_color = Color(1, 1, 1, 0.15686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhnlh"]
+bg_color = Color(1, 1, 1, 0.09803922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0q5o"]
+bg_color = Color(1, 1, 1, 0.15686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ia6q"]
+bg_color = Color(1, 1, 1, 0.09803922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8d48k"]
+bg_color = Color(1, 1, 1, 0.15686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j7dv"]
+bg_color = Color(1, 1, 1, 0.09803922)
+
 [sub_resource type="FontVariation" id="FontVariation_77to7"]
 base_font = ExtResource("6_dtwsp")
 
@@ -107,6 +142,8 @@ focused_password = ExtResource("8_navmr")
 unfocused_password = ExtResource("7_cmc67")
 focused_password_hover = ExtResource("7_ph3x0")
 unfocused_password_hover = ExtResource("8_16hpu")
+loading_scene = ExtResource("9_6380c")
+bios_scene = ExtResource("10_cwvky")
 
 [node name="Wallpaper" type="TextureRect" parent="." unique_id=1011528341]
 layout_mode = 1
@@ -130,7 +167,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.21000001)
 
 [node name="Fade" type="ColorRect" parent="." unique_id=1389606458]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,7 +176,6 @@ grow_vertical = 2
 color = Color(0, 0.47058824, 0.84313726, 1)
 
 [node name="Screen 1" type="Control" parent="." unique_id=1470781847]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -200,6 +235,8 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Screen 2" type="Control" parent="." unique_id=2142739356]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -437,14 +474,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_vicex")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_77to7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1pkoy")
 text = "Reset password"
-
-[node name="Ease of Access Reference" type="TextureRect" parent="Screen 2/Sub-Screen 1" unique_id=1548205443]
-visible = false
-texture_filter = 1
-layout_mode = 0
-offset_right = 1366.0
-offset_bottom = 768.0
-texture = ExtResource("16_ajffm")
 
 [node name="Ease of Access Menu" type="Control" parent="Screen 2/Sub-Screen 1" unique_id=787001739]
 visible = false
@@ -1416,6 +1445,165 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_nhfc8")
 theme_override_icons/checked = ExtResource("17_6380c")
 theme_override_icons/unchecked = ExtResource("17_ajffm")
 
+[node name="Power Menu" type="Control" parent="Screen 2/Sub-Screen 1" unique_id=79453864]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -180.0
+offset_bottom = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Border" type="ColorRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=2080262045]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 106.0
+color = Color(0, 0, 0, 0.5254902)
+
+[node name="Border2" type="ColorRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1143643947]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 1.0
+offset_right = 121.0
+offset_bottom = 106.0
+color = Color(0, 0, 0, 0.5254902)
+
+[node name="Border3" type="ColorRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1219797067]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 121.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 0.5254902)
+
+[node name="Border4" type="ColorRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=218436536]
+layout_mode = 0
+offset_top = 105.0
+offset_right = 120.0
+offset_bottom = 106.0
+color = Color(0, 0, 0, 0.5254902)
+
+[node name="Background" type="ColorRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1367520374]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 120.0
+offset_bottom = 105.0
+color = Color(0.11, 0.11, 0.11, 0.7647059)
+
+[node name="TextureRect" type="TextureRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1827356310]
+modulate = Color(1, 1, 1, 0.047058824)
+texture_filter = 1
+layout_mode = 0
+offset_right = 121.0
+offset_bottom = 106.0
+texture = SubResource("NoiseTexture2D_lfkbx")
+expand_mode = 1
+
+[node name="Sleep Button" type="Button" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1236204747]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 120.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_nhfc8")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6380c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cwvky")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mhnlh")
+alignment = 0
+
+[node name="Sleep Icon" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Power Menu/Sleep Button" unique_id=91295149]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 31.0
+offset_bottom = 32.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_kcwbp")
+text = ""
+
+[node name="Sleep Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Power Menu/Sleep Button" unique_id=768961969]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 6.0
+offset_right = 81.0
+offset_bottom = 29.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_kcwbp")
+theme_override_font_sizes/normal_font_size = 14
+text = "Sleep"
+scroll_active = false
+
+[node name="Shut down Button" type="Button" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1430934368]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 36.0
+offset_right = 120.0
+offset_bottom = 70.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6380c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r0q5o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ia6q")
+
+[node name="Shut down Icon" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Power Menu/Shut down Button" unique_id=1665260086]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 31.0
+offset_bottom = 31.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_kcwbp")
+text = ""
+
+[node name="Shut down Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Power Menu/Shut down Button" unique_id=1430534181]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 109.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_kcwbp")
+theme_override_font_sizes/normal_font_size = 14
+text = "Shut down"
+scroll_active = false
+
+[node name="Restart Button" type="Button" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=831087775]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 70.0
+offset_right = 120.0
+offset_bottom = 103.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6380c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8d48k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2j7dv")
+
+[node name="Restart Icon" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Power Menu/Restart Button" unique_id=864258467]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 31.0
+offset_bottom = 29.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_kcwbp")
+text = ""
+
+[node name="Shut down Label2" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Power Menu/Restart Button" unique_id=1997932371]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 3.0
+offset_right = 109.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_kcwbp")
+theme_override_font_sizes/normal_font_size = 14
+text = "Restart"
+scroll_active = false
+
 [node name="Sub-Screen 2" type="Control" parent="Screen 2" unique_id=134176009]
 visible = false
 layout_mode = 1
@@ -1645,6 +1833,9 @@ horizontal_alignment = 1
 [connection signal="toggled" from="Screen 2/Sub-Screen 1/Ease of Access Menu/High Contrast Check" to="." method="_on_high_contrast_check_toggled"]
 [connection signal="toggled" from="Screen 2/Sub-Screen 1/Ease of Access Menu/Sticky Keys Check" to="." method="_on_sticky_keys_check_toggled"]
 [connection signal="toggled" from="Screen 2/Sub-Screen 1/Ease of Access Menu/Filter Keys Check" to="." method="_on_filter_keys_check_toggled"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 1/Power Menu/Sleep Button" to="." method="_on_sleep_button_pressed"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 1/Power Menu/Shut down Button" to="." method="_on_shut_down_button_pressed"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 1/Power Menu/Restart Button" to="." method="_on_restart_button_pressed"]
 [connection signal="button_down" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_button_down"]
 [connection signal="button_up" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_button_up"]
 [connection signal="focus_exited" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_focus_exited"]

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://0an1w8x3w4aj"]
+
+[ext_resource type="Script" uid="uid://ccedgme7eensd" path="res://scripts/bios.gd" id="1_4w5jx"]
+[ext_resource type="Texture2D" uid="uid://l7yrnvb5kplf" path="res://assets/godot/logo_vertical_monochrome_dark.svg" id="1_5gxep"]
+[ext_resource type="PackedScene" uid="uid://dc8javrocmb23" path="res://scenes/boot_screen.tscn" id="2_ipnml"]
+[ext_resource type="FontFile" uid="uid://vpymg1gffexr" path="res://fonts/UbuntuSansMono-Medium.ttf" id="3_c27mg"]
+
+[node name="BIOS" type="Control" unique_id=1019062813]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4w5jx")
+boot_scene = ExtResource("2_ipnml")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1371637770]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="TextureRect" parent="." unique_id=888110790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.5
+offset_top = -265.66907
+offset_right = 197.5
+offset_bottom = 185.66907
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5gxep")
+expand_mode = 1
+
+[node name="BIOS Label" type="Label" parent="." unique_id=1095784578]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -225.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.9019608, 0, 1)
+theme_override_fonts/font = ExtResource("3_c27mg")
+theme_override_font_sizes/font_size = 17
+text = "Press F2 to enter Setup"
+
+[node name="Shade" type="ColorRect" parent="." unique_id=2140757730]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

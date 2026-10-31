@@ -9,6 +9,7 @@ extends Control
 var stage = 0
 
 func _ready() -> void:
+	Global.loading_text = "Welcome"
 	var loading_screen = loading_scene.instantiate()
 	loading_screen.next_scene = login_scene
 	var boot_time = randf_range(5.0, 10.0)
