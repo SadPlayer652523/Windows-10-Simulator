@@ -34,7 +34,7 @@ func spin(spinner: Label, add_text="") -> void:
 			stage = 0
 		await get_tree().create_timer(0.025).timeout
 		
-func get_system_time(label: RichTextLabel, colon: RichTextLabel, login=false):
+func get_system_time_for_login(label: RichTextLabel, colon: RichTextLabel):
 	var time_dict = Time.get_datetime_dict_from_system()
 	var hours = "%02d" % time_dict.hour
 	var minutes = "%02d" % time_dict.minute
@@ -42,14 +42,15 @@ func get_system_time(label: RichTextLabel, colon: RichTextLabel, login=false):
 	if hours == 0:
 		hours = 12
 	
-	if hours >= 10:
+	if hours >= 10 and hours != 11:
 		label.text = str(hours) + "\t" + minutes
-		if login:
-			colon.position.x = 104
+		colon.position.x = 104
+	elif hours == 11:
+		label.text = str(hours) + " " + minutes
+		colon.position.x = 90
 	else:
 		label.text = str(hours) + " " + minutes
-		if login:
-			colon.position.x = 72
+		colon.position.x = 72
 	
 func get_system_date(label: RichTextLabel):
 	var date_dict = Time.get_date_dict_from_system()

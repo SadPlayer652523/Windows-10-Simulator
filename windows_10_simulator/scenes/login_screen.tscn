@@ -16,6 +16,9 @@
 [ext_resource type="StyleBox" uid="uid://gftgwggaluxm" path="res://styles/next_button_unfocused.tres" id="10_bmn8x"]
 [ext_resource type="FontFile" uid="uid://cnv884bygopvm" path="res://fonts/segoeuisl.ttf" id="11_16hpu"]
 [ext_resource type="FontFile" uid="uid://dcp45d12fhla" path="res://fonts/segoe_slboot.ttf" id="16_16hpu"]
+[ext_resource type="Texture2D" uid="uid://dvdviy2rvc54j" path="res://references/easeofaccesshover.png" id="16_ajffm"]
+[ext_resource type="Texture2D" uid="uid://cdhqupoutfqk2" path="res://assets/check_button/checked.png" id="17_6380c"]
+[ext_resource type="Texture2D" uid="uid://dqkv2b8bma760" path="res://assets/check_button/unchecked.png" id="17_ajffm"]
 
 [sub_resource type="FontVariation" id="FontVariation_lfkbx"]
 base_font = ExtResource("11_16hpu")
@@ -28,14 +31,15 @@ base_font = ExtResource("4_mhqwn")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qeenl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtwsp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ea2r"]
+bg_color = Color(1, 1, 1, 0.27450982)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmn8x"]
 bg_color = Color(1, 1, 1, 0.16862746)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cmc67"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_navmr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cwvky"]
 
 [sub_resource type="FontVariation" id="FontVariation_aui74"]
 base_font = ExtResource("6_dtwsp")
@@ -54,6 +58,13 @@ baseline_offset = -0.03
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pkoy"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhfc8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aos7j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajffm"]
+bg_color = Color(0.87058824, 0.87058824, 0.87058824, 1)
+
 [sub_resource type="FontVariation" id="FontVariation_77to7"]
 base_font = ExtResource("6_dtwsp")
 
@@ -66,7 +77,7 @@ baseline_offset = -0.01
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfkbx"]
 bg_color = Color(1, 1, 1, 0.19607843)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajffm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6380c"]
 bg_color = Color(1, 1, 1, 0.33333334)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16hpu"]
@@ -118,7 +129,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.21000001)
 
+[node name="Fade" type="ColorRect" parent="." unique_id=1389606458]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.47058824, 0.84313726, 1)
+
 [node name="Screen 1" type="Control" parent="." unique_id=1470781847]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,9 +171,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 104.0
+offset_left = 103.0
 offset_top = -253.0
-offset_right = 126.0
+offset_right = 125.0
 offset_bottom = -117.0
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("4_mhqwn")
@@ -178,8 +200,6 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Screen 2" type="Control" parent="." unique_id=2142739356]
-visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,11 +267,12 @@ offset_right = -23.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
+pivot_offset = Vector2(24, 24)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_kcwbp")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qeenl")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dtwsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ea2r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bmn8x")
 text = ""
 
@@ -268,10 +289,12 @@ offset_right = -72.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
+pivot_offset = Vector2(23, 24)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_kcwbp")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cmc67")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ea2r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bmn8x")
 text = ""
 
@@ -288,13 +311,15 @@ offset_right = -120.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
+pivot_offset = Vector2(24, 24)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_kcwbp")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxEmpty_navmr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cwvky")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ea2r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bmn8x")
 
-[node name="WiFi Button Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1" unique_id=310415162]
+[node name="WiFi Button Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/WiFi Button" unique_id=310415162]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 3
@@ -302,10 +327,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -142.0
-offset_top = -65.0
-offset_right = -141.0
-offset_bottom = -64.0
+offset_left = -22.0
+offset_top = -43.0
+offset_right = -21.0
+offset_bottom = -42.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -413,6 +438,984 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_77to7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1pkoy")
 text = "Reset password"
 
+[node name="Ease of Access Reference" type="TextureRect" parent="Screen 2/Sub-Screen 1" unique_id=1548205443]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_right = 1366.0
+offset_bottom = 768.0
+texture = ExtResource("16_ajffm")
+
+[node name="Ease of Access Menu" type="Control" parent="Screen 2/Sub-Screen 1" unique_id=787001739]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -233.0
+offset_top = -446.0
+offset_right = -8.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Border" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1515818165]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -425.0
+offset_bottom = -49.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Background" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1910988238]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -424.0
+offset_right = -1.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Narrator Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=230591714]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -410.0
+offset_right = -139.0
+offset_bottom = -389.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("11_16hpu")
+theme_override_font_sizes/normal_font_size = 15
+text = "Narrator"
+scroll_active = false
+
+[node name="Narrator Status Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=642561984]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -384.0
+offset_right = -139.0
+offset_bottom = -363.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_dtwsp")
+theme_override_font_sizes/normal_font_size = 15
+text = "Off"
+scroll_active = false
+
+[node name="Narrator Check" type="CheckButton" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=620240657]
+texture_filter = 1
+layout_mode = 0
+offset_left = 141.0
+offset_top = 38.0
+offset_right = 191.0
+offset_bottom = 65.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nhfc8")
+theme_override_icons/checked = ExtResource("17_6380c")
+theme_override_icons/unchecked = ExtResource("17_ajffm")
+
+[node name="Narrator Check Focus" type="Control" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=896470730]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -89.0
+offset_top = 37.0
+offset_right = -29.0
+offset_bottom = 66.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Square" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=135231479]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square2" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1318842953]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 4.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square3" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=663475880]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 6.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square4" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=2044942638]
+layout_mode = 0
+offset_left = 7.0
+offset_right = 8.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square5" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=716806529]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 10.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square6" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=685716579]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 12.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square7" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1915377379]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 14.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square8" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=740143988]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 16.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square9" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1284272168]
+layout_mode = 0
+offset_left = 17.0
+offset_right = 18.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square10" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=39754650]
+layout_mode = 0
+offset_left = 19.0
+offset_right = 20.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square11" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1701429580]
+layout_mode = 0
+offset_left = 21.0
+offset_right = 22.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square12" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1386168953]
+layout_mode = 0
+offset_left = 23.0
+offset_right = 24.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square13" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=408102994]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 26.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square14" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1278605674]
+layout_mode = 0
+offset_left = 27.0
+offset_right = 28.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square15" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=167415086]
+layout_mode = 0
+offset_left = 29.0
+offset_right = 30.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square16" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1365500899]
+layout_mode = 0
+offset_left = 31.0
+offset_right = 32.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square17" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=2034002311]
+layout_mode = 0
+offset_left = 33.0
+offset_right = 34.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square18" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=902110000]
+layout_mode = 0
+offset_left = 35.0
+offset_right = 36.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square19" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1822253696]
+layout_mode = 0
+offset_left = 37.0
+offset_right = 38.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square20" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=684703443]
+layout_mode = 0
+offset_left = 39.0
+offset_right = 40.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square21" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1370701458]
+layout_mode = 0
+offset_left = 41.0
+offset_right = 42.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square22" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1455854988]
+layout_mode = 0
+offset_left = 43.0
+offset_right = 44.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square23" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1488613361]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 46.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square24" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=770732580]
+layout_mode = 0
+offset_left = 47.0
+offset_right = 48.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square25" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=205966170]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 50.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square26" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=375785637]
+layout_mode = 0
+offset_left = 51.0
+offset_right = 52.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square27" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1760518507]
+layout_mode = 0
+offset_left = 53.0
+offset_right = 54.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square28" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1968812521]
+layout_mode = 0
+offset_left = 55.0
+offset_right = 56.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square29" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=424658382]
+layout_mode = 0
+offset_left = 57.0
+offset_right = 58.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square30" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1492284890]
+layout_mode = 0
+offset_left = 59.0
+offset_right = 60.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square31" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=452964933]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 2.0
+offset_right = 60.0
+offset_bottom = 3.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square32" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1824182035]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square33" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=395248767]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 6.0
+offset_right = 60.0
+offset_bottom = 7.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square34" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=344367231]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = 9.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square35" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=2025588177]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 10.0
+offset_right = 60.0
+offset_bottom = 11.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square36" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1442439638]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 12.0
+offset_right = 60.0
+offset_bottom = 13.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square37" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1881653983]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 14.0
+offset_right = 60.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square38" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1319354425]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 16.0
+offset_right = 60.0
+offset_bottom = 17.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square39" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1059498349]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 18.0
+offset_right = 60.0
+offset_bottom = 19.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square40" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=323818045]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 21.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square41" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=182074130]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 22.0
+offset_right = 60.0
+offset_bottom = 23.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square42" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=617283556]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 24.0
+offset_right = 60.0
+offset_bottom = 25.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square43" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=436210509]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 26.0
+offset_right = 60.0
+offset_bottom = 27.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square44" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=873159298]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 28.0
+offset_right = 60.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square45" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1172249092]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 28.0
+offset_right = 58.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square46" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=287518933]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 28.0
+offset_right = 56.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square47" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=820978095]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 28.0
+offset_right = 54.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square48" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1094867640]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 28.0
+offset_right = 52.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square49" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=345033795]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 28.0
+offset_right = 50.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square50" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=101034780]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 28.0
+offset_right = 48.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square51" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=983534807]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 28.0
+offset_right = 46.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square52" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1947028950]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 28.0
+offset_right = 44.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square53" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=308337020]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 28.0
+offset_right = 42.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square54" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1228266801]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 28.0
+offset_right = 40.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square55" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1086956272]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 28.0
+offset_right = 38.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square56" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=531843416]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 28.0
+offset_right = 36.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square57" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=781273571]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 28.0
+offset_right = 34.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square58" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=187420811]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 28.0
+offset_right = 32.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square59" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1631727658]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 28.0
+offset_right = 30.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square60" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1611337417]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 28.0
+offset_right = 28.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square61" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=2053617787]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 28.0
+offset_right = 26.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square62" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1074918326]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 28.0
+offset_right = 24.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square63" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=2045349257]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 28.0
+offset_right = 22.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square64" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=521154142]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 28.0
+offset_right = 20.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square65" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=294364471]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 28.0
+offset_right = 18.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square66" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=958275649]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 28.0
+offset_right = 16.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square67" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1716254098]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 28.0
+offset_right = 14.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square68" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1258067741]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 28.0
+offset_right = 12.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square69" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1486287780]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 28.0
+offset_right = 10.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square70" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1082559485]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 28.0
+offset_right = 8.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square71" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=348462412]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 28.0
+offset_right = 6.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square72" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1618340090]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 4.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square73" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1921216592]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 28.0
+offset_right = 2.0
+offset_bottom = 29.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square74" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1738037202]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 1.0
+offset_bottom = 28.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square75" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=2099914093]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 1.0
+offset_bottom = 26.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square76" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1386525879]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 1.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square77" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=2049517350]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 1.0
+offset_bottom = 22.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square78" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1702771160]
+layout_mode = 0
+offset_top = 19.0
+offset_right = 1.0
+offset_bottom = 20.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square79" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=338686177]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 1.0
+offset_bottom = 18.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square80" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=206141333]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 1.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square81" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=198374244]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 1.0
+offset_bottom = 14.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square82" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=135945724]
+layout_mode = 0
+offset_top = 11.0
+offset_right = 1.0
+offset_bottom = 12.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square83" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=3841603]
+layout_mode = 0
+offset_top = 9.0
+offset_right = 1.0
+offset_bottom = 10.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square84" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1846258083]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 1.0
+offset_bottom = 8.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square85" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1233641567]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 1.0
+offset_bottom = 6.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square86" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=208574152]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 1.0
+offset_bottom = 4.0
+color = Color(0, 0, 0, 1)
+
+[node name="Square87" type="ColorRect" parent="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check Focus" unique_id=1703880339]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 2.0
+color = Color(0, 0, 0, 1)
+
+[node name="Magnifier Button" type="Button" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=534162362]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 77.0
+offset_right = 224.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_dtwsp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aos7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ajffm")
+alignment = 0
+
+[node name="Magnifier Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=233783454]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -339.0
+offset_right = -138.0
+offset_bottom = -318.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_dtwsp")
+theme_override_font_sizes/normal_font_size = 15
+text = "Magnifier"
+fit_content = true
+scroll_active = false
+
+[node name="OSK Button" type="Button" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1351555638]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 117.0
+offset_right = 224.0
+offset_bottom = 157.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_dtwsp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aos7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ajffm")
+alignment = 0
+
+[node name="OSK Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1976829456]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -202.0
+offset_top = -299.0
+offset_right = -62.0
+offset_bottom = -278.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_dtwsp")
+theme_override_font_sizes/normal_font_size = 15
+text = "On-Screen Keyboard"
+scroll_active = false
+
+[node name="High Contrast Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1044547292]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -259.0
+offset_right = -110.0
+offset_bottom = -238.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("11_16hpu")
+theme_override_font_sizes/normal_font_size = 15
+text = "High Contrast"
+scroll_active = false
+
+[node name="High Contrast Status Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=627764240]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -233.0
+offset_right = -139.0
+offset_bottom = -212.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_dtwsp")
+theme_override_font_sizes/normal_font_size = 15
+text = "Off"
+scroll_active = false
+
+[node name="High Contrast Check" type="CheckButton" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=281566931]
+texture_filter = 1
+layout_mode = 0
+offset_left = 141.0
+offset_top = 189.0
+offset_right = 191.0
+offset_bottom = 216.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nhfc8")
+theme_override_icons/checked = ExtResource("17_6380c")
+theme_override_icons/unchecked = ExtResource("17_ajffm")
+
+[node name="Sticky Keys Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1064773955]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -188.0
+offset_right = -110.0
+offset_bottom = -167.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("11_16hpu")
+theme_override_font_sizes/normal_font_size = 15
+text = "Sticky Keys"
+scroll_active = false
+
+[node name="Sticky Keys Status Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=617248200]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -162.0
+offset_right = -139.0
+offset_bottom = -141.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_dtwsp")
+theme_override_font_sizes/normal_font_size = 15
+text = "Off"
+scroll_active = false
+
+[node name="Sticky Keys Check" type="CheckButton" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1434115695]
+texture_filter = 1
+layout_mode = 0
+offset_left = 141.0
+offset_top = 260.0
+offset_right = 191.0
+offset_bottom = 287.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nhfc8")
+theme_override_icons/checked = ExtResource("17_6380c")
+theme_override_icons/unchecked = ExtResource("17_ajffm")
+
+[node name="Filter Keys Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=2118930120]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -117.0
+offset_right = -110.0
+offset_bottom = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("11_16hpu")
+theme_override_font_sizes/normal_font_size = 15
+text = "Filter Keys"
+scroll_active = false
+
+[node name="Filter Keys Status Label" type="RichTextLabel" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=2086625684]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -91.0
+offset_right = -139.0
+offset_bottom = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_dtwsp")
+theme_override_font_sizes/normal_font_size = 15
+text = "Off"
+scroll_active = false
+
+[node name="Filter Keys Check" type="CheckButton" parent="Screen 2/Sub-Screen 1/Ease of Access Menu" unique_id=1940317257]
+texture_filter = 1
+layout_mode = 0
+offset_left = 141.0
+offset_top = 331.0
+offset_right = 191.0
+offset_bottom = 358.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nhfc8")
+theme_override_icons/checked = ExtResource("17_6380c")
+theme_override_icons/unchecked = ExtResource("17_ajffm")
+
 [node name="Sub-Screen 2" type="Control" parent="Screen 2" unique_id=134176009]
 visible = false
 layout_mode = 1
@@ -457,10 +1460,11 @@ offset_right = 61.0
 offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(60, 16.6)
 theme_override_fonts/font = SubResource("FontVariation_1pkoy")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_lfkbx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ajffm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6380c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_16hpu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6gsg0")
 text = " OK"
@@ -619,6 +1623,15 @@ theme_override_font_sizes/font_size = 24
 text = " Welcome"
 horizontal_alignment = 1
 
+[connection signal="button_down" from="Screen 2/Sub-Screen 1/Power Button" to="." method="_on_power_button_button_down"]
+[connection signal="button_up" from="Screen 2/Sub-Screen 1/Power Button" to="." method="_on_power_button_button_up"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 1/Power Button" to="." method="_on_power_button_pressed"]
+[connection signal="button_down" from="Screen 2/Sub-Screen 1/Ease of Access Button" to="." method="_on_ease_of_access_button_button_down"]
+[connection signal="button_up" from="Screen 2/Sub-Screen 1/Ease of Access Button" to="." method="_on_ease_of_access_button_button_up"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 1/Ease of Access Button" to="." method="_on_ease_of_access_button_pressed"]
+[connection signal="button_down" from="Screen 2/Sub-Screen 1/WiFi Button" to="." method="_on_wifi_button_button_down"]
+[connection signal="button_up" from="Screen 2/Sub-Screen 1/WiFi Button" to="." method="_on_wifi_button_button_up"]
+[connection signal="pressed" from="Screen 2/Sub-Screen 1/WiFi Button" to="." method="_on_wifi_button_pressed"]
 [connection signal="focus_entered" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_focus_entered"]
 [connection signal="focus_exited" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_focus_exited"]
 [connection signal="mouse_entered" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_mouse_entered"]
@@ -628,5 +1641,11 @@ horizontal_alignment = 1
 [connection signal="mouse_entered" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_password_box_mouse_entered"]
 [connection signal="mouse_exited" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_password_box_mouse_exited"]
 [connection signal="pressed" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_next_button_pressed"]
+[connection signal="toggled" from="Screen 2/Sub-Screen 1/Ease of Access Menu/Narrator Check" to="." method="_on_narrator_check_toggled"]
+[connection signal="toggled" from="Screen 2/Sub-Screen 1/Ease of Access Menu/High Contrast Check" to="." method="_on_high_contrast_check_toggled"]
+[connection signal="toggled" from="Screen 2/Sub-Screen 1/Ease of Access Menu/Sticky Keys Check" to="." method="_on_sticky_keys_check_toggled"]
+[connection signal="toggled" from="Screen 2/Sub-Screen 1/Ease of Access Menu/Filter Keys Check" to="." method="_on_filter_keys_check_toggled"]
+[connection signal="button_down" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_button_down"]
+[connection signal="button_up" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_button_up"]
 [connection signal="focus_exited" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_focus_exited"]
 [connection signal="pressed" from="Screen 2/Sub-Screen 2/OK Button" to="." method="_on_ok_button_pressed"]
