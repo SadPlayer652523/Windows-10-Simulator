@@ -29,4 +29,4 @@ anchor_bottom = 1.0
 offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.2, 0.2, 0.2, 0.50980395)
+color = Color(0.2, 0.2, 0.2, 0.54901963)

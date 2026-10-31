@@ -34,6 +34,7 @@ extends Control
 @onready var sticky_keys_status_label: RichTextLabel = $"Screen 2/Sub-Screen 1/Ease of Access Menu/Sticky Keys Status Label"
 @onready var filter_keys_status_label: RichTextLabel = $"Screen 2/Sub-Screen 1/Ease of Access Menu/Filter Keys Status Label"
 @onready var power_menu: Control = $"Screen 2/Sub-Screen 1/Power Menu"
+@onready var noise: TextureRect = $"Screen 2/Sub-Screen 1/Power Menu/Noise"
 @onready var sleep_button: Button = $"Screen 2/Sub-Screen 1/Power Menu/Sleep Button"
 @onready var shut_down_button: Button = $"Screen 2/Sub-Screen 1/Power Menu/Shut down Button"
 @onready var restart_button: Button = $"Screen 2/Sub-Screen 1/Power Menu/Restart Button"
@@ -52,7 +53,7 @@ func _ready() -> void:
 	Global.get_system_date(date_label)
 	Global.get_system_time_for_login(time_label, colon_label)
 	var fade_tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-	fade_tween.tween_property(fade, "color:a", 0.0, 0.4)
+	fade_tween.tween_property(fade, "color:a", 0.0, 0.3)
 	password_box.focus_mode = Control.FOCUS_NONE
 	Input.warp_mouse(get_viewport().get_visible_rect().size / 2)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -75,6 +76,7 @@ func _input(event: InputEvent) -> void:
 			unblur()
 		if ease_of_access_menu.visible and event is InputEventMouseButton and event.pressed:
 			if !ease_of_access_menu_border.get_global_rect().has_point(event.position):
+				DisplayServer.tts_stop()
 				ease_of_access_menu.hide()
 				narrator_check_focus.show()
 			if narrator_check_focus.visible:
@@ -83,8 +85,9 @@ func _input(event: InputEvent) -> void:
 			if incorrect_label.get_global_rect().has_point(event.position):
 				ok_button_focus_border.hide()
 		if power_menu.visible and event is InputEventMouseButton and event.pressed:
-			if !power_menu.get_global_rect().has_point(event.position):
+			if !noise.get_global_rect().has_point(event.position):
 				power_menu.hide()
+				power_menu.modulate.a = 0.0
 
 func blur():
 	var tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_LINEAR)
@@ -186,12 +189,14 @@ func _on_ok_button_focus_exited() -> void:
 
 func _on_power_button_pressed() -> void:
 	power_menu.show()
+	var menu_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	menu_tween.tween_property(power_menu, "modulate:a", 1.0, 0.2)
 
 func _on_ease_of_access_button_pressed() -> void:
 	ease_of_access_menu.show()
 	var voices = DisplayServer.tts_get_voices_for_language("en")
 	if voices.size() > 0:
-		DisplayServer.tts_speak("Make your computer easier to use. Windows will read and scan this list automatically. Press the spacebar to select the highlighted option.", voices[0])
+		DisplayServer.tts_speak("Make your computer easier to use. Windows will read and scan this list automatically. Press the spacebar to select the highlighted option.", voices[0], 100)
 
 func _on_wifi_button_pressed() -> void:
 	pass
@@ -258,4 +263,3 @@ func _on_restart_button_pressed() -> void:
 	Global.loading_text = "Restarting"
 	get_tree().root.add_child(loading_screen)
 	queue_free()
-	

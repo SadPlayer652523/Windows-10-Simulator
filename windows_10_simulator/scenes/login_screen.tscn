@@ -1447,6 +1447,7 @@ theme_override_icons/unchecked = ExtResource("17_ajffm")
 
 [node name="Power Menu" type="Control" parent="Screen 2/Sub-Screen 1" unique_id=79453864]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1455,7 +1456,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -121.0
 offset_top = -180.0
-offset_bottom = -74.0
+offset_bottom = -21.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -1495,7 +1496,7 @@ offset_right = 120.0
 offset_bottom = 105.0
 color = Color(0.11, 0.11, 0.11, 0.7647059)
 
-[node name="TextureRect" type="TextureRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1827356310]
+[node name="Noise" type="TextureRect" parent="Screen 2/Sub-Screen 1/Power Menu" unique_id=1827356310]
 modulate = Color(1, 1, 1, 0.047058824)
 texture_filter = 1
 layout_mode = 0
