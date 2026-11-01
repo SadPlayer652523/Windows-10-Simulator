@@ -1,0 +1,532 @@
+[gd_scene format=3 uid="uid://cyv125j8p767r"]
+
+[ext_resource type="Texture2D" uid="uid://7lyulpwq2dse" path="res://references/notepad.png" id="1_8ctv0"]
+[ext_resource type="Script" uid="uid://cfeche5r77fk4" path="res://scripts/applications/notepad.gd" id="1_hymo6"]
+[ext_resource type="FontFile" uid="uid://upk42e5mft3f" path="res://fonts/segoeui.ttf" id="2_fedyn"]
+[ext_resource type="Texture2D" uid="uid://43pfh4vabl6h" path="res://assets/microsoft/notepad/16x16.png" id="2_vt2l0"]
+[ext_resource type="FontFile" uid="uid://djf4afly8hx06" path="res://fonts/SegMDL2.ttf" id="3_fedyn"]
+[ext_resource type="FontFile" uid="uid://de8kjk2yq7tha" path="res://fonts/UbuntuSansMono-Regular.ttf" id="5_vh36q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfkbx"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.18, 0.18, 0.18, 0.54901963)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aui74"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_lfkbx"]
+base_font = ExtResource("2_fedyn")
+variation_embolden = -0.27
+
+[sub_resource type="FontVariation" id="FontVariation_fedyn"]
+base_font = ExtResource("3_fedyn")
+baseline_offset = 0.15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vt2l0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ctv0"]
+bg_color = Color(0.94509804, 0.4392157, 0.47843137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vh36q"]
+bg_color = Color(0.9098039, 0.06666667, 0.13725491, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_vt2l0"]
+base_font = ExtResource("3_fedyn")
+spacing_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxc2t"]
+bg_color = Color(0, 0, 0, 0.23529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hymo6"]
+bg_color = Color(0, 0, 0, 0.11764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3frkw"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 2
+border_color = Color(0.9411765, 0.9411765, 0.9411765, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_vh36q"]
+base_font = ExtResource("2_fedyn")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fedyn"]
+bg_color = Color(0.9411765, 0.9411765, 0.9411765, 1)
+border_width_bottom = 2
+border_color = Color(0.9411765, 0.9411765, 0.9411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g24j3"]
+content_margin_left = 3.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oecq1"]
+content_margin_left = 3.0
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Notepad" type="Control" unique_id=1658974020]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -389.0
+offset_top = -239.0
+offset_right = 446.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hymo6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=58345275]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -145.0
+offset_right = 237.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8ctv0")
+
+[node name="Window" type="Panel" parent="." unique_id=663398368]
+layout_mode = 0
+offset_right = 835.0
+offset_bottom = 483.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lfkbx")
+
+[node name="Title Bar" type="Panel" parent="Window" unique_id=1749510841]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 834.0
+offset_bottom = 31.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aui74")
+
+[node name="Icon" type="TextureRect" parent="Window/Title Bar" unique_id=434661304]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 24.0
+offset_bottom = 22.0
+texture = ExtResource("2_vt2l0")
+expand_mode = 1
+
+[node name="Title" type="RichTextLabel" parent="Window/Title Bar" unique_id=826751939]
+layout_mode = 0
+offset_left = 29.0
+offset_right = 166.0
+offset_bottom = 29.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_lfkbx")
+theme_override_font_sizes/normal_font_size = 12
+text = "Untitled - Notepad"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Close Button" type="Button" parent="Window/Title Bar" unique_id=154500292]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 29.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_fedyn")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vt2l0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8ctv0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vh36q")
+
+[node name="Close Button Label" type="Label" parent="Window/Title Bar/Close Button" unique_id=1149104775]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -12.5
+offset_right = 17.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fedyn")
+theme_override_font_sizes/font_size = 12
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Maximize Button" type="Button" parent="Window/Title Bar" unique_id=1144141214]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_right = -45.0
+offset_bottom = 29.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_vt2l0")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vt2l0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uxc2t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hymo6")
+
+[node name="Maximize Button Label" type="Label" parent="Window/Title Bar/Maximize Button" unique_id=1820733840]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -11.5
+offset_right = 16.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fedyn")
+theme_override_font_sizes/font_size = 10
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Minimize Button" type="Button" parent="Window/Title Bar" unique_id=305305862]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_right = -90.0
+offset_bottom = 29.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_fedyn")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vt2l0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uxc2t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hymo6")
+
+[node name="Minimize Button Label" type="Label" parent="Window/Title Bar/Minimize Button" unique_id=1996441631]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -11.5
+offset_right = 16.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fedyn")
+theme_override_font_sizes/font_size = 10
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu Bar" type="Panel" parent="Window" unique_id=1618209850]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 31.0
+offset_right = 834.0
+offset_bottom = 51.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3frkw")
+
+[node name="File Label" type="RichTextLabel" parent="Window/Menu Bar" unique_id=548564140]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 24.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "File"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Edit Label" type="RichTextLabel" parent="Window/Menu Bar" unique_id=1591723968]
+layout_mode = 0
+offset_left = 39.0
+offset_top = -5.0
+offset_right = 60.0
+offset_bottom = 24.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "Edit"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Format Label" type="RichTextLabel" parent="Window/Menu Bar" unique_id=885926186]
+layout_mode = 0
+offset_left = 73.0
+offset_top = -5.0
+offset_right = 112.0
+offset_bottom = 24.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "Format"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="View Label" type="RichTextLabel" parent="Window/Menu Bar" unique_id=278815459]
+layout_mode = 0
+offset_left = 125.0
+offset_top = -5.0
+offset_right = 151.0
+offset_bottom = 24.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "View"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Help Label" type="RichTextLabel" parent="Window/Menu Bar" unique_id=1995335702]
+layout_mode = 0
+offset_left = 164.0
+offset_top = -5.0
+offset_right = 190.0
+offset_bottom = 24.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "Help"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Status Bar" type="Panel" parent="Window" unique_id=1141219310]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -416.5
+offset_top = -23.0
+offset_right = 416.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fedyn")
+
+[node name="ColorRect" type="ColorRect" parent="Window/Status Bar" unique_id=1603431356]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -5.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Window/Status Bar" unique_id=512387265]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = -2.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Window/Status Bar" unique_id=2131549851]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -11.0
+offset_right = -2.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Window/Status Bar" unique_id=1680331528]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -8.0
+offset_right = -5.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Window/Status Bar" unique_id=877211617]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Window/Status Bar" unique_id=46616257]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -5.0
+offset_right = -8.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Window/Status Bar" unique_id=1919199347]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -22.0
+offset_right = -120.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Window/Status Bar" unique_id=111807221]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -241.0
+offset_top = -22.0
+offset_right = -240.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="Window/Status Bar" unique_id=651946503]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -291.0
+offset_top = -22.0
+offset_right = -290.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.84313726, 0.84313726, 0.84313726, 1)
+
+[node name="Text Type" type="RichTextLabel" parent="Window/Status Bar" unique_id=13383523]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_top = -3.0
+offset_right = -74.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme_override_colors/default_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "UTF-8"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Text Type 2?" type="RichTextLabel" parent="Window/Status Bar" unique_id=1756877592]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -234.0
+offset_top = -3.0
+offset_right = -141.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme_override_colors/default_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "Windows (CRLF)"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Zoom Level" type="RichTextLabel" parent="Window/Status Bar" unique_id=671616302]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -285.0
+offset_top = -3.0
+offset_right = -252.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme_override_colors/default_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vh36q")
+theme_override_font_sizes/normal_font_size = 12
+text = "100%"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="Window" unique_id=1977034849]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 51.0
+offset_right = 834.0
+offset_bottom = 460.0
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_vh36q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g24j3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oecq1")
+caret_blink = true
+
+[connection signal="mouse_entered" from="Window/Title Bar/Close Button" to="." method="_on_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="Window/Title Bar/Close Button" to="." method="_on_close_button_mouse_exited"]
+[connection signal="text_changed" from="Window/TextEdit" to="." method="_on_text_edit_text_changed"]

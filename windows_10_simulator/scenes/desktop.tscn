@@ -1,6 +1,62 @@
 [gd_scene format=3 uid="uid://dbe4fqlb7hmbb"]
 
+[ext_resource type="Script" uid="uid://cvuvf41dkgo1y" path="res://scripts/desktop.gd" id="1_6ajoh"]
 [ext_resource type="Texture2D" uid="uid://ce23lhbue033i" path="res://assets/wallpapers/wallpaper.jpg" id="1_xxa2h"]
+[ext_resource type="Texture2D" uid="uid://cdcpygtixgd3m" path="res://references/timehover.png" id="2_6ajoh"]
+[ext_resource type="FontFile" uid="uid://djf4afly8hx06" path="res://fonts/SegMDL2.ttf" id="3_dcrhm"]
+[ext_resource type="Texture2D" uid="uid://rfnkd02k0wff" path="res://assets/white_logo.png" id="4_6ajoh"]
+[ext_resource type="FontFile" uid="uid://bblhomjt08mll" path="res://fonts/seguisb.ttf" id="6_6ajoh"]
+[ext_resource type="PackedScene" uid="uid://cyv125j8p767r" path="res://scenes/applications/notepad.tscn" id="7_veafp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vicex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ajoh"]
+bg_color = Color(1, 1, 1, 0.08627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ox5hf"]
+bg_color = Color(1, 1, 1, 0.08627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfkbx"]
+content_margin_left = 40.0
+bg_color = Color(0.24705882, 0.24705882, 0.24705882, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.39607844, 0.39607844, 0.39607844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcvwy"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.47058824, 0.84313726, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_77to7"]
+color = Color(1, 1, 1, 0.4)
+grow_begin = 0.0
+grow_end = 0.0
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6ajoh"]
+color = Color(1, 1, 1, 0.4)
+grow_begin = 0.0
+grow_end = 0.0
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcrhm"]
+bg_color = Color(1, 1, 1, 0.08627451)
+border_width_left = 1
+border_color = Color(1, 1, 1, 0.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_veafp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_veafp"]
+bg_color = Color(1, 1, 1, 0.12941177)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkmwo"]
+bg_color = Color(1, 1, 1, 0.08627451)
 
 [node name="Desktop" type="Control" unique_id=28967836]
 layout_mode = 3
@@ -9,6 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6ajoh")
 
 [node name="Wallpaper" type="TextureRect" parent="." unique_id=684459525]
 layout_mode = 1
@@ -20,6 +77,17 @@ grow_vertical = 2
 texture = ExtResource("1_xxa2h")
 expand_mode = 1
 
+[node name="Reference" type="TextureRect" parent="." unique_id=1503341686]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6ajoh")
+
 [node name="Taskbar" type="ColorRect" parent="." unique_id=875627892]
 layout_mode = 1
 anchors_preset = 12
@@ -30,3 +98,145 @@ offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.2, 0.2, 0.2, 0.54901963)
+
+[node name="Start Button" type="Button" parent="Taskbar" unique_id=356961889]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_dcrhm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vicex")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ajoh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ox5hf")
+
+[node name="Logo" type="TextureRect" parent="Taskbar/Start Button" unique_id=1490478809]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -29.0
+offset_right = 31.5
+offset_bottom = -13.5
+grow_vertical = 0
+scale = Vector2(1.06, 1.06)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-0.465, 0.33)
+mouse_filter = 2
+texture = ExtResource("4_6ajoh")
+expand_mode = 1
+
+[node name="Search Bar" type="LineEdit" parent="Taskbar" unique_id=1145767033]
+layout_mode = 0
+offset_left = 48.0
+offset_right = 392.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 0.74509805)
+theme_override_fonts/font = ExtResource("3_dcrhm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_lfkbx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vcvwy")
+virtual_keyboard_enabled = false
+caret_blink = true
+
+[node name="Search Icon" type="Label" parent="Taskbar/Search Bar" unique_id=1200047778]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.74509805)
+theme_override_fonts/font = ExtResource("3_dcrhm")
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Search Placeholder" type="Label" parent="Taskbar/Search Bar" unique_id=557022771]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 217.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.74509805)
+theme_override_fonts/font = ExtResource("3_dcrhm")
+text = "Type here to search"
+
+[node name="Show Desktop Button" type="Button" parent="Taskbar" unique_id=1030352079]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -40.0
+offset_right = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxLine_77to7")
+theme_override_styles/pressed = SubResource("StyleBoxLine_6ajoh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dcrhm")
+
+[node name="Date & Time Button" type="Button" parent="Taskbar" unique_id=1827732714]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -40.0
+offset_right = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_veafp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_veafp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pkmwo")
+
+[node name="Time Label" type="RichTextLabel" parent="Taskbar/Date & Time Button" unique_id=748076650]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -38.0
+offset_bottom = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_6ajoh")
+theme_override_font_sizes/normal_font_size = 12
+text = "10:00 PM"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Date Label" type="RichTextLabel" parent="Taskbar/Date & Time Button" unique_id=1853339329]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -20.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_6ajoh")
+theme_override_font_sizes/normal_font_size = 12
+text = "9/30/2014"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Notepad" parent="." unique_id=1658974020 instance=ExtResource("7_veafp")]
+layout_mode = 1
+
+[connection signal="mouse_entered" from="Taskbar/Start Button" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="Taskbar/Start Button" to="." method="_on_start_button_mouse_exited"]
+[connection signal="focus_entered" from="Taskbar/Search Bar" to="." method="_on_search_bar_focus_entered"]
+[connection signal="focus_exited" from="Taskbar/Search Bar" to="." method="_on_search_bar_focus_exited"]
+[connection signal="text_changed" from="Taskbar/Search Bar" to="." method="_on_search_bar_text_changed"]

@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dowjyn4movm2k" path="res://scenes/loading.tscn" id="9_6380c"]
 [ext_resource type="StyleBox" uid="uid://dxqj8o1cdh5qm" path="res://styles/next_button_hover.tres" id="10_6jw0y"]
 [ext_resource type="StyleBox" uid="uid://gftgwggaluxm" path="res://styles/next_button_unfocused.tres" id="10_bmn8x"]
-[ext_resource type="PackedScene" uid="uid://0an1w8x3w4aj" path="res://scenes/bios.tscn" id="10_cwvky"]
 [ext_resource type="FontFile" uid="uid://cnv884bygopvm" path="res://fonts/segoeuisl.ttf" id="11_16hpu"]
 [ext_resource type="FontFile" uid="uid://dcp45d12fhla" path="res://fonts/segoe_slboot.ttf" id="16_16hpu"]
 [ext_resource type="Texture2D" uid="uid://cdhqupoutfqk2" path="res://assets/check_button/checked.png" id="17_6380c"]
@@ -44,6 +43,13 @@ bg_color = Color(1, 1, 1, 0.16862746)
 
 [sub_resource type="FontVariation" id="FontVariation_aui74"]
 base_font = ExtResource("6_dtwsp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnbxu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvjdw"]
+bg_color = Color(0, 0.47058824, 0.84313726, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ea2r"]
 
 [sub_resource type="FontVariation" id="FontVariation_vicex"]
 base_font = ExtResource("5_kcwbp")
@@ -143,7 +149,6 @@ unfocused_password = ExtResource("7_cmc67")
 focused_password_hover = ExtResource("7_ph3x0")
 unfocused_password_hover = ExtResource("8_16hpu")
 loading_scene = ExtResource("9_6380c")
-bios_scene = ExtResource("10_cwvky")
 
 [node name="Wallpaper" type="TextureRect" parent="." unique_id=1011528341]
 layout_mode = 1
@@ -167,6 +172,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.21000001)
 
 [node name="Fade" type="ColorRect" parent="." unique_id=1389606458]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -394,6 +400,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0.70975083, 0.70975083, 0.70975083, 0.795)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0.47058824, 0.84313726, 1)
 theme_override_fonts/font = SubResource("FontVariation_aui74")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = ExtResource("8_navmr")
@@ -405,6 +412,28 @@ virtual_keyboard_enabled = false
 caret_blink = true
 secret = true
 secret_character = "●"
+
+[node name="Show Button" type="Button" parent="Screen 2/Sub-Screen 1" unique_id=2027060140]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 84.0
+offset_top = 68.0
+offset_right = 118.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.70980394, 0.70980394, 0.70980394, 0.79607844)
+theme_override_colors/font_hover_color = Color(0, 0.47058824, 0.84313726, 1)
+theme_override_fonts/font = ExtResource("5_kcwbp")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jnbxu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dvjdw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5ea2r")
+text = ""
 
 [node name="Next Button" type="Button" parent="Screen 2/Sub-Screen 1" unique_id=1635900886]
 layout_mode = 1
@@ -465,7 +494,10 @@ offset_right = 55.5
 offset_bottom = 174.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.87, 0.87, 0.87, 0.84705883)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.8156863)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 0.78431374)
 theme_override_fonts/font = ExtResource("6_dtwsp")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lfkbx")
@@ -1825,7 +1857,12 @@ horizontal_alignment = 1
 [connection signal="focus_exited" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_focus_exited"]
 [connection signal="mouse_entered" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_mouse_entered"]
 [connection signal="mouse_exited" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_mouse_exited"]
+[connection signal="text_changed" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_text_changed"]
 [connection signal="text_submitted" from="Screen 2/Sub-Screen 1/Password Box" to="." method="_on_password_box_text_submitted"]
+[connection signal="button_down" from="Screen 2/Sub-Screen 1/Show Button" to="." method="_on_show_button_button_down"]
+[connection signal="button_up" from="Screen 2/Sub-Screen 1/Show Button" to="." method="_on_show_button_button_up"]
+[connection signal="mouse_entered" from="Screen 2/Sub-Screen 1/Show Button" to="." method="_on_show_button_mouse_entered"]
+[connection signal="mouse_exited" from="Screen 2/Sub-Screen 1/Show Button" to="." method="_on_show_button_mouse_exited"]
 [connection signal="button_down" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_next_button_button_down"]
 [connection signal="mouse_entered" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_password_box_mouse_entered"]
 [connection signal="mouse_exited" from="Screen 2/Sub-Screen 1/Next Button" to="." method="_on_password_box_mouse_exited"]

@@ -23,6 +23,7 @@ extends Control
 @onready var ease_of_access_button: Button = $"Screen 2/Sub-Screen 1/Ease of Access Button"
 @onready var wifi_button: Button = $"Screen 2/Sub-Screen 1/WiFi Button"
 @onready var password_box: LineEdit = $"Screen 2/Sub-Screen 1/Password Box"
+@onready var show_button: Button = $"Screen 2/Sub-Screen 1/Show Button"
 @onready var next_button: Button = $"Screen 2/Sub-Screen 1/Next Button"
 @onready var password_hint: RichTextLabel = $"Screen 2/Sub-Screen 1/Password Hint"
 @onready var reset_password_button: Button = $"Screen 2/Sub-Screen 1/Reset Password Button"
@@ -48,9 +49,12 @@ extends Control
 var tween_fade_time = 0.2
 var blurred = false
 var incorrect_password = false
+var mouse_hidden = false
+var password_shown = false
+var mouse_in_show_button = false
 
 func _ready() -> void:
-	Global.get_system_date(date_label)
+	Global.get_system_date_for_login(date_label)
 	Global.get_system_time_for_login(time_label, colon_label)
 	var fade_tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	fade_tween.tween_property(fade, "color:a", 0.0, 0.3)
@@ -60,13 +64,18 @@ func _ready() -> void:
 	password_box.release_focus()
 
 func _process(delta: float) -> void:
-	Global.get_system_date(date_label)
+	Global.get_system_date_for_login(date_label)
 	Global.get_system_time_for_login(time_label, colon_label)
 	
 	if blurred:
 		password_box.editable = true
 	else:
 		password_box.editable = false
+		
+	if sub_screen_3.visible and !mouse_hidden:
+		mouse_hidden = true
+		await get_tree().create_timer(1.5).timeout
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
@@ -88,6 +97,11 @@ func _input(event: InputEvent) -> void:
 			if !noise.get_global_rect().has_point(event.position):
 				power_menu.hide()
 				power_menu.modulate.a = 0.0
+	if event is InputEventMouseMotion and show_button.visible:
+		if show_button.get_global_rect().has_point(event.position):
+			mouse_in_show_button = true
+		else:
+			mouse_in_show_button = false
 
 func blur():
 	var tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_LINEAR)
@@ -117,10 +131,15 @@ func unblur():
 func _on_password_box_focus_entered() -> void:
 	next_button.add_theme_stylebox_override("normal", next_button_focused)
 	password_box.add_theme_stylebox_override("normal", focused_password)
+	show_button.show()
 
 func _on_password_box_focus_exited() -> void:
 	next_button.add_theme_stylebox_override("normal", next_button_unfocused)
-	password_box.add_theme_stylebox_override("normal", unfocused_password)
+	if !password_shown and !mouse_in_show_button:
+		password_box.add_theme_stylebox_override("normal", unfocused_password)
+		show_button.hide()
+	else:
+		password_box.add_theme_stylebox_override("normal", focused_password_hover)
 
 func _on_password_box_mouse_entered() -> void:
 	if next_button.has_focus() or password_box.has_focus():
@@ -263,3 +282,33 @@ func _on_restart_button_pressed() -> void:
 	Global.loading_text = "Restarting"
 	get_tree().root.add_child(loading_screen)
 	queue_free()
+
+func _on_password_box_text_changed(new_text: String) -> void:
+	show_button.visible = new_text.length() > 0
+
+func _on_show_button_button_down() -> void:
+	password_box.secret = false
+	password_shown = true
+
+func _on_show_button_button_up() -> void:
+	password_box.add_theme_stylebox_override("normal", unfocused_password_hover)
+	password_box.grab_focus()
+	password_box.secret = true
+	password_shown = false
+
+func _on_show_button_mouse_entered() -> void:
+	if next_button.has_focus() or password_box.has_focus():
+		password_box.add_theme_stylebox_override("focus", focused_password_hover)
+		next_button.add_theme_stylebox_override("normal", next_button_hover)
+	else:
+		password_box.add_theme_stylebox_override("normal", unfocused_password_hover)
+		next_button.add_theme_stylebox_override("normal", next_button_hover)
+
+func _on_show_button_mouse_exited() -> void:
+	password_box.add_theme_stylebox_override("focus", focused_password)
+	if next_button.has_focus() or password_box.has_focus():
+		next_button.add_theme_stylebox_override("normal", next_button_focused)
+		password_box.add_theme_stylebox_override("normal", focused_password)
+	else:
+		next_button.add_theme_stylebox_override("normal", next_button_unfocused)
+		password_box.add_theme_stylebox_override("normal", unfocused_password)

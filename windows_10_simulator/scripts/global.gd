@@ -46,17 +46,20 @@ func get_system_time_for_login(label: RichTextLabel, colon: RichTextLabel):
 	if hours == 0:
 		hours = 12
 	
-	if hours >= 10 and hours != 11:
+	if hours >= 10 and hours != 11 and hours != 1:
 		label.text = str(hours) + "\t" + minutes
 		colon.position.x = 104
 	elif hours == 11:
 		label.text = str(hours) + " " + minutes
 		colon.position.x = 90
+	elif hours == 1:
+		label.text = str(hours) + " " + minutes
+		colon.position.x = 58
 	else:
 		label.text = str(hours) + " " + minutes
 		colon.position.x = 72
 	
-func get_system_date(label: RichTextLabel):
+func get_system_date_for_login(label: RichTextLabel):
 	var date_dict = Time.get_date_dict_from_system()
 	var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 	var months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -67,6 +70,25 @@ func get_system_date(label: RichTextLabel):
 	
 	if is_instance_valid(label):
 		label.text = current_weekday + ", " + current_month + " " + str(current_day)
+		
+func get_system_time(label: RichTextLabel):
+	var time_dict = Time.get_datetime_dict_from_system()
+	var hours = "%02d" % time_dict.hour
+	var minutes = "%02d" % time_dict.minute
+	var time = ""
+	if int(hours) > 11:
+		time = "PM"
+	else:
+		time = "AM"
+	hours = int(hours) % 12
+	if hours == 0:
+		hours = 12
+		
+	label.text = str(hours) + ":" + minutes + " " + time
+	
+func get_system_date(label: RichTextLabel):
+	var date_dict = Time.get_date_dict_from_system()
+	label.text = str(date_dict.month) + "/" + str(date_dict.day) + "/" + str(date_dict.year)
 		
 func hash_password(password: String) -> String:
 	var hash = HashingContext.new()
