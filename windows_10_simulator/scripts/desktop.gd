@@ -28,7 +28,7 @@ func _on_search_bar_focus_entered() -> void:
 	search_placeholder.add_theme_color_override("font_color", Color.html("#000000"))
 
 func _on_search_bar_focus_exited() -> void:
-	search_icon.add_theme_color_override("font_color", Color.html("ffffffbe"))
+	search_icon.add_theme_color_override("font_color", Color.html("#ffffffbe"))
 	search_placeholder.add_theme_color_override("font_color", Color.html("#ffffffbe"))
 	search_bar.text = ""
 	search_placeholder.show()
