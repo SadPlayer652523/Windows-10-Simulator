@@ -20,3 +20,5 @@ This project is incomplete and may or may not receive updates in the future.
 Made in Godot Game Engine on Windows 10
 
 ### More may be added to this project
+
+Thank you for checking out this project and supporting my development!
