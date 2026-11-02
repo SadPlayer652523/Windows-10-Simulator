@@ -9,3 +9,12 @@ This project is incomplete and may or may not receive updates in the future.
 - Bare-bones Notepad app and desktop
 - Visual Search bar
 - Working clock
+
+# Not working
+
+- WiFi Button in Login Screen
+- F2 doesn't open BIOS (intentional)
+- Desktop Start Button and Search bar and Show Desktop button doesn't work.
+- Notepad Menu bar and Status bar is static
+
+### More may be added to this project
